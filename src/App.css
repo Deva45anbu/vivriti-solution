@@ -32,7 +32,100 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+
+
+
+.header-fontcolor-pink {
+  color: #ff0ba3;
+}
+
+.navbar-bg-clr {
+  background-color: white !important
+    /* background-color: white !important; */
+}
+
+.no-border {
+  border: 0;
+}
+
+.header-fontsize {
+  font-size: x-large;
+}
+
+input {
+  width: 100%;
+}
+
+.grdient {
+  background: #333333;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #333333, #dd1818);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #333333, #dd1818);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+}
+
+.category-input-containner {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+}
+
+/* .image-cointainer {
+  width: 30%;
+} */
+
+
+.image-container {
+  height: 300px;
+  /* Set the height as needed */
+  width: 100%;
+  overflow: hidden;
+  /* Ensure the image doesn't overflow */
+  border-radius: 10px 10px 0 0;
+}
+
+.image-container img {
+  height: 100%;
+  /* Make the image fill the container vertically */
+  width: auto;
+  /* Maintain the aspect ratio */
+}
+
+.product-description {
+  font-size: small;
+}
+
+.product-title {
+  font-size: medium;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* flex-flow: row wrap; */
+  justify-content: space-between;
+  
+}
+
+.item{
+  /* order: 4; */
+  flex-grow: 4;
 }
