@@ -71,7 +71,7 @@ export const Flexsample = () => {
                 productDetails.length === 0 ? <div>No records found</div> :
                     productDetails.map((item) => {
                         return (
-                            <div className="item m-4" key={''}>
+                            <div className="m-4" key={''}>
                                 <div class="card">
                                     <img src="https://cdn.dummyjson.com/product-images/6/1.png" class="card-img-top" alt="" />
                                     <div class="card-body">

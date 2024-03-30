@@ -116,16 +116,41 @@ input {
 }
 
 
-.container {
+/* .container { 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* flex-flow: row wrap; */
   justify-content: space-between;
   
 }
 
 .item{
-  /* order: 4; */
   flex-grow: 4;
+}*/
+
+
+.star-rating {
+  color: black;
+  /* Set the color of the stars */
+}
+
+.star-rating span {
+  font-size: 15px;
+  /* Adjust the size of the stars */
+}
+
+.star-rating .filled {
+  color: gold;
+  border-radius: 1px;
+  /* Set the color of the filled stars */
+}
+
+.star-rating .half-filled {
+  color: blue;
+  /* Set the color of the half-filled stars */
+}
+
+.star-rating .empty {
+  color: #ccc;
+  /* Set the color of the empty stars */
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { fetchProductCategory, fetchProductData } from './User';
 import { Flexsample } from './Flexsample';
+import { HeaderComponent } from './component/headerComponent';
 
 
 function App() {
@@ -59,106 +60,139 @@ function App() {
     ]
   }
 
+  const StarRating = (rating) => {
+    const stars = [];
 
+    // Round the rating to the nearest half star
+    const roundedRating = Math.round(rating * 2) / 2;
+
+    // Fill stars based on rating
+    for (let i = 0; i < 5; i++) {
+      if (i < roundedRating) {
+        stars.push(<span key={i} className="filled">&#9733;</span>);
+        // if (i < roundedRating - 0.5) {
+        //   // Full star
+        //   // stars.push(<span key={i} className="filled">&#9733;</span>);
+
+        //   stars.push(<span key={i}>&#9733;</span>);
+        // } else {
+        //   // Half star
+        //   stars.push(<span key={i}>&#9734;&#9733;</span>);
+        //   // stars.push(<span key={i} className="half-filled">&#9734;&#9733;</span>);
+
+        // }
+      } else {
+        // Empty star
+        stars.push(<span key={i}>&#9734;</span>);
+        // stars.push(<span key={i} className="empty">&#9734;</span>);
+
+      }
+    }
+
+    return (
+      <div className="star-rating">
+        {stars}
+      </div>
+    );
+  };
 
 
 
   return (
-    <div>
-      <Flexsample></Flexsample>
-    </div>
-    // <div className=' vh-100'>
-    //   <div className="container header-fontsize mt-2" >
-    //     <div className="row my-3">
-    //       <div className="col fw-bold float-start ">
-    //         {/* <div className=" "> */}
-    //         <span className="header-fontcolor-pink">M</span>oBoo<span className="header-fontcolor-pink">M</span>
-    //         {/* </div> */}
-    //       </div>
-    //       <div className="col-4">
-    //         <input></input>
-    //       </div>
-    //       <div className="col">
-    //         <div className="d-inline mx-2">Store</div>
-    //         <div className="d-inline mx-2">Account</div>
-    //         <div className="d-inline mx-2">Wish List</div>
-    //         <div className="d-inline mx-2">Basket</div>
-    //       </div>
-    //     </div>
-    //     <div className="grdient">
-    //       <div>Lorem lpsum</div>
-    //       <div>Slash Sales beginf in June. Get up to 80% Discount on all products Read More</div>
-    //     </div>
-
-    //     <div className='category-input-containner'>
-    //       <select className="form-select" aria-label="Default select example">
-    //         <option selected value=''>Select Category</option>
-    //         {
-    //           categories.length === 0 ?
-    //             <option>Error while fetching the data</option>
-    //             :
-    //             categories.map((item) => {
-    //               return (
-    //                 <option value={item}>{item}</option>
-    //               )
-    //             }
-    //             )
-    //         }
-    //       </select>
-    //     </div>
-
-
-    //     <div id='products-container container'>
-    //       <div className='containner'>
-    //         <div className='row'>
-    //           {
-    //             productDetails.length == 0 ? <div>No records found</div> :
-    //               productDetails.map((item) => {
-    //                 return (
-    //                   <div className="col" key={''}>
-    //                     <div class="card">
-    //                       <img src="https://cdn.dummyjson.com/product-images/6/1.png" class="card-img-top" alt="" />
-    //                       <div class="card-body">
-    //                         <h5 class="">{item.title}</h5>
-    //                         <p class="card-text product-description" >{item.description.length > 40 ? item.description.slice(0,40).trim()+'...'  : item.description}</p>
-    //                         <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Button</a>
-    //                       </div>
-    //                     </div>
-    //                   </div>
-    //                 )
-
-    //               })
-    //           }
-
-
-    //         </div>
-    //         <div className='row'>
-    //           <div className='col'>{product.id}</div>
-    //           <div className='col'>{product.id}</div>
-    //           <div className='col'>{product.id}</div>
-    //         </div>
-    //       </div>
-
-
-
-
-
-
-
-
-    //       <div >
-    //         d
-    //         {/* <image href=''></image> */}
-
-    //         {/* <img src="https://cdn.dummyjson.com/product-images/6/1.png" alt="Example" /> */}
-
-    //       </div>
-
-    //       {product.id}
-    //     </div>
-    //   </div>
-
+    // <div>
+    //   <Flexsample></Flexsample>
     // </div>
+    <div className=' vh-100'>
+      <div className="container header-fontsize mt-2" >
+
+        <HeaderComponent />
+
+
+
+
+
+          
+        <div className="grdient">
+          <div>Lorem lpsum</div>
+          <div>Slash Sales beginf in June. Get up to 80% Discount on all products Read More</div>
+        </div>
+
+        <div className='category-input-containner'>
+          <select className="form-select" onChange={() => { }}>
+            <option selected value=''>Select Category</option>
+            {
+              categories.length === 0 ?
+                <option>Error while fetching the data</option>
+                :
+                categories.map((item) => {
+                  return (
+                    <option value={item}>{item}</option>
+                  )
+                }
+                )
+            }
+          </select>
+        </div>
+
+
+        <div id='products-container container'>
+          <div className='containner'>
+            <div className='row'>
+              {
+                productDetails.length == 0 ? <div>No records found</div> :
+                  productDetails.map((item) => {
+                    return (
+                      <div className="col" key={''}>
+                        <div class="card">
+                          <img src={item.images[0]} class="card-img-top" alt="" />
+                          <div class="card-body">
+                            <div>
+                              <h5 class="">{item.title}</h5>
+                              <p class="card-text product-description" >{item.description.length > 40 ? item.description.slice(0, 40).trim() + '...' : item.description}</p>
+                              {/* <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Button</a> */}
+                            </div>
+                            <div>
+                              <p>${item.price}</p>
+                              {StarRating(item.rating)}
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    )
+
+                  })
+              }
+
+
+            </div>
+            <div className='row'>
+              <div className='col'>{product.id}</div>
+              <div className='col'>{product.id}</div>
+              <div className='col'>{product.id}</div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div >
+            d
+            {/* <image href=''></image> */}
+
+            {/* <img src="https://cdn.dummyjson.com/product-images/6/1.png" alt="Example" /> */}
+
+          </div>
+
+          {product.id}
+        </div>
+      </div>
+
+    </div>
   );
 }
 
